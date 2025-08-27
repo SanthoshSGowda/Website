@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }} — Blog{% endblock %}
+{% block content %}
+<article>
+  <h1>{{ post.title }}</h1>
+  <div class="text-muted small mb-3">{{ post.created_at.strftime('%b %d, %Y') }}</div>
+  <div>{{ post.body | safe }}</div>
+</article>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<div class="d-flex align-items-center justify-content-between">
+  <h1>Dashboard</h1>
+  <div>
+    <a class="btn btn-outline-secondary btn-sm" href="{{ url_for('admin_posts') }}">Posts</a>
+    <a class="btn btn-outline-secondary btn-sm" href="{{ url_for('admin_services') }}">Services</a>
+    <a class="btn btn-outline-secondary btn-sm" href="{{ url_for('admin_messages') }}">Messages</a>
+    <a class="btn btn-outline-danger btn-sm" href="{{ url_for('admin_logout') }}">Logout</a>
+  </div>
+</div>
+<hr>
+<div class="row g-3">
+  <div class="col-md-4"><div class="card"><div class="card-body"><h5>Posts</h5><p class="display-6">{{ post_count }}</p></div></div></div>
+  <div class="col-md-4"><div class="card"><div class="card-body"><h5>Services</h5><p class="display-6">{{ service_count }}</p></div></div></div>
+  <div class="col-md-4"><div class="card"><div class="card-body"><h5>Messages</h5><p class="display-6">{{ msg_count }}</p></div></div></div>
+</div>
+{% endblock %}

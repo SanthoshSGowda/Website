@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Manage Posts{% endblock %}
+{% block content %}
+<div class="d-flex align-items-center justify-content-between">
+  <h1>Posts</h1>
+  <a href="{{ url_for('admin_post_new') }}" class="btn btn-primary btn-sm">New Post</a>
+</div>
+<table class="table mt-3">
+  <thead><tr><th>Title</th><th>Slug</th><th>Published</th><th>Actions</th></tr></thead>
+  <tbody>
+    {% for p in posts %}
+    <tr>
+      <td>{{ p.title }}</td>
+      <td>{{ p.slug }}</td>
+      <td>{% if p.published %}Yes{% else %}No{% endif %}</td>
+      <td>
+        <a class="btn btn-outline-secondary btn-sm" href="{{ url_for('admin_post_edit', post_id=p.id) }}">Edit</a>
+        <form method="POST" action="{{ url_for('admin_post_delete', post_id=p.id) }}" style="display:inline" onsubmit="return confirm('Delete this post?')">
+          <button class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

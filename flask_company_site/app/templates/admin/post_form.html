@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ 'New' if mode=='new' else 'Edit' }} Post{% endblock %}
+{% block content %}
+<h1>{{ 'New' if mode=='new' else 'Edit' }} Post</h1>
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">
+    {{ form.title.label(class="form-label") }}
+    {{ form.title(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    {{ form.slug.label(class="form-label") }}
+    {{ form.slug(class="form-control") }}
+    <div class="form-text">Unique URL slug, e.g., "my-first-post".</div>
+  </div>
+  <div class="mb-3">
+    {{ form.body.label(class="form-label") }}
+    {{ form.body(class="form-control", rows=10) }}
+  </div>
+  <div class="form-check mb-3">
+    {{ form.published(class="form-check-input") }}
+    {{ form.published.label(class="form-check-label") }}
+  </div>
+  {{ form.submit(class="btn btn-primary") }}
+  <a href="{{ url_for('admin_posts') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

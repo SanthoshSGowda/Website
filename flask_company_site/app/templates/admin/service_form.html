@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{{ 'New' if mode=='new' else 'Edit' }} Service{% endblock %}
+{% block content %}
+<h1>{{ 'New' if mode=='new' else 'Edit' }} Service</h1>
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">
+    {{ form.name.label(class="form-label") }}
+    {{ form.name(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    {{ form.description.label(class="form-label") }}
+    {{ form.description(class="form-control", rows=6) }}
+  </div>
+  <div class="mb-3">
+    {{ form.price_inr.label(class="form-label") }}
+    {{ form.price_inr(class="form-control") }}
+  </div>
+  {{ form.submit(class="btn btn-primary") }}
+  <a href="{{ url_for('admin_services') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
